@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+
+<h1>Articles</h1>
+
+
+<ul>
+{% for article in object_list %}
+    <li>
+        <a href="article/{{ article.id }}">{{ article.created|date }} - {{ article.title }}</a>
+    </li>
+{% empty %}
+    <li>内容为空。</li>
+{% endfor %}
+</ul>
+
+
+
+
+{% endblock %}

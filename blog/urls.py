@@ -15,14 +15,26 @@ Including another URLconf
 """
 
 from django.urls import path
-
-from .views import index,list,detail,about,archive
+from django.views.generic.dates import ArchiveIndexView
+from .models import Article
+from .views import index,about
+from .views import ArticleListView,ArticleDetailView,ArticleMonthArchiveView,ArticleYearArchiveView
 
 urlpatterns = [
     path('', index),
-    path('list', list),
-    path('detail', detail),
+    path('list', ArticleListView.as_view(), name="article-list"),
+    path('article/<pk>/', ArticleDetailView.as_view(), name="article-detail"),
     path('about', about),
     path('about', about),
-    path('archive', archive),
+
+
+    path('<int:year>/',
+         ArticleYearArchiveView.as_view(),
+         name="article_year_archive"),
+
+
+path('archive/',
+         ArchiveIndexView.as_view(model=Article, date_field="created"),
+         name="article_archive"),
+    # path('archive', ArticleMonthArchiveView.as_view(), name="ArticleMonthArchive"),
 ]
