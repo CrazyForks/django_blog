@@ -32,8 +32,8 @@ class Article(models.Model):
 
     content = models.TextField('文章内容')
 
-    keywords = models.CharField('seo的keywords', max_length=640)
-    description = models.CharField('seo的description', max_length=640)
+    keywords = models.CharField('seo的keywords', max_length=640, blank=True, null=True)
+    description = models.CharField('seo的description', max_length=640, blank=True, null=True)
 
     click = models.PositiveIntegerField('点击量',default=0)
 
