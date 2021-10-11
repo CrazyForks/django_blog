@@ -8,6 +8,5 @@
 from django.db import models
 
 class ChoicesArticleStatus(models.IntegerChoices):
-    DRAFT = -1, '草稿'
     PUBLIC = 1, '公开'
     PRIVATE = 0, '隐藏'

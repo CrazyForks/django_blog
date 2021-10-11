@@ -5,12 +5,12 @@ from utils.ModelChoices import ChoicesArticleStatus
 
 class Category(models.Model):
     name = models.CharField('分类名', max_length=64)
-    sort = models.SmallIntegerField('分类排序', default=0, help_text="数字越小，越靠前")
+    sort = models.SmallIntegerField('分类排序', default=0, help_text="数字越小，排名越靠前")
     created = models.DateTimeField(verbose_name='添加时间',  auto_now_add=True)
     modified = models.DateTimeField(verbose_name='修改时间', default=timezone.now)
 
     def __str__(self):
-        return f'{self.name}<{self.sort}>'
+        return self.name
 
     class Meta:  # 按sort排序
         ordering = ['sort']
