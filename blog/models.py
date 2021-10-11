@@ -27,8 +27,9 @@ class Article(models.Model):
     title = models.CharField('文章标题',max_length=128)
 
     category = models.ForeignKey(Category, verbose_name='文章分类', on_delete=models.SET(category_haveNo), )
-    status = models.IntegerField('文章状态', choices=ChoicesArticleStatus.choices, default=ChoicesArticleStatus.PUBLIC)
-    is_original = models.BooleanField('是否原创', default=True)
+    # status = models.IntegerField('文章状态', choices=ChoicesArticleStatus.choices, default=ChoicesArticleStatus.PUBLIC)
+    is_public = models.BooleanField('是否公开', default=True, help_text="文章是否公开展示，不勾选就对外隐藏")
+    is_original = models.BooleanField('是否原创', default=True, help_text="文章是否原创，不勾选就是转载")
 
     content = models.TextField('文章内容')
 
@@ -40,6 +41,10 @@ class Article(models.Model):
     created = models.DateTimeField(verbose_name='添加时间',  auto_now_add=True)
     modified = models.DateTimeField(verbose_name='修改时间', default=timezone.now)
 
+    def __str__(self):
+        return self.title
+
     class Meta:
+        ordering = ['-created'] # 默认按照创建时间排序
         verbose_name = "文章"
         verbose_name_plural = verbose_name
