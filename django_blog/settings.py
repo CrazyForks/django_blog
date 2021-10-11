@@ -147,5 +147,6 @@ ALLOWED_HOSTS = []
 
 # 要启用的app
 INSTALLED_APPS += [
+    'reversion',
     'blog'
 ]
