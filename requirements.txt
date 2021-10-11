@@ -1,0 +1,16 @@
+
+# 必须的，核心的
+# -----------------------------------------------
+Django==3.2.5  # https://github.com/django/django
+
+
+# 第三方
+# -----------------------------------------------
+django-debug-toolbar==3.2.2  # 调试 https://github.com/jazzband/django-debug-toolbar
+
+django-reversion==4.0.0  # admin 版本控制  https://github.com/etianen/django-reversion
+
+
+
+
+
