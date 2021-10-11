@@ -11,6 +11,6 @@ django-debug-toolbar==3.2.2  # 调试 https://github.com/jazzband/django-debug-t
 django-reversion==4.0.0  # admin 版本控制  https://github.com/etianen/django-reversion
 
 
+markdown==3.3.4 # markdown https://github.com/Python-Markdown/markdown
 
-
-
+bleach==3.3.0 # 过滤非法字符 https://github.com/mozilla/bleach

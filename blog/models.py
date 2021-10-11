@@ -3,6 +3,7 @@ from django.utils import timezone
 from django.urls import reverse
 
 from utils.ModelChoices import ChoicesArticleStatus
+from utils.makrdown2 import md2html_and_html_clean
 
 class Category(models.Model):
     name = models.CharField('分类名', max_length=64)
@@ -32,7 +33,8 @@ class Article(models.Model):
     is_public = models.BooleanField('是否公开', default=True, help_text="文章是否公开展示，不勾选就对外隐藏")
     is_original = models.BooleanField('是否原创', default=True, help_text="文章是否原创，不勾选就是转载")
 
-    content = models.TextField('文章内容')
+    content_markdown = models.TextField('文章内容markdown', null=True, blank=True)
+    content_html = models.TextField('文章内容html', null=True, blank=True,help_text="返回给客户端(根据markdown自动生成的，不要手动修改)")
 
     keywords = models.CharField('seo的keywords', max_length=640, blank=True, null=True)
     description = models.CharField('seo的description', max_length=640, blank=True, null=True)
@@ -47,6 +49,12 @@ class Article(models.Model):
 
     def get_absolute_url(self):
         return reverse('article-detail', kwargs={'pk': self.pk})
+
+    # 主要是给 admin调用，在admin操作保存的时候调用
+    def save(self, *args, **kwargs):
+        self.content_html = md2html_and_html_clean(self.content_markdown)  # 转义危险的字符
+        super().save(*args, **kwargs)  # Call the "real" save() method.
+
 
     class Meta:
         ordering = ['-created'] # 默认按照创建时间排序
