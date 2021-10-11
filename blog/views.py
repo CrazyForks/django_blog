@@ -10,7 +10,7 @@ from .models import Article
 class ArticleListView(ListView):
     # model = Article
     queryset = Article.get_public_article()
-    paginate_by = 1
+    paginate_by = 3
 
 
     def get_context_data(self, **kwargs):
