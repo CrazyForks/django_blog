@@ -8,8 +8,10 @@ from .models import Article
 
 
 class ArticleListView(ListView):
-    model = Article
-    paginate_by = 100
+    # model = Article
+    queryset = Article.get_public_article()
+    paginate_by = 1
+
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -19,22 +21,25 @@ class ArticleListView(ListView):
 
 class ArticleDetailView(DetailView):
 
-    model = Article
-
+    # model = Article
+    queryset = Article.get_public_article()
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         # context['now'] = timezone.now()
         return context
 
+
+
+
 class ArticleMonthArchiveView(MonthArchiveView):
-    queryset = Article.objects.all()
+    queryset = Article.get_public_article()
     date_field = "created"
     # make_object_list = True
     allow_future = True
 
 
 class ArticleYearArchiveView(YearArchiveView):
-    queryset = Article.objects.all()
+    queryset = Article.get_public_article()
     date_field = "created"
     # make_object_list = True
     allow_future = True

@@ -50,10 +50,15 @@ class Article(models.Model):
     def get_absolute_url(self):
         return reverse('article-detail', kwargs={'pk': self.pk})
 
+    @staticmethod
+    def get_public_article():
+        """没有公开的文章，就不要显示出来"""
+        return Article.objects.filter(is_public=True)
+
     # 主要是给 admin调用，在admin操作保存的时候调用
     def save(self, *args, **kwargs):
         self.content_html = md2html_and_html_clean(self.content_markdown)  # 转义危险的字符
-        super().save(*args, **kwargs)  # Call the "real" save() method.
+        super().save(*args, **kwargs) # 保存
 
 
     class Meta:
