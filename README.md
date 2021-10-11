@@ -1,3 +1,7 @@
+
+项目状态： 正在开发中
+
+
 # django_blog
 django+bootstrap5 实现的 个人博客
 
