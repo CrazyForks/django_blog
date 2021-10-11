@@ -10,7 +10,7 @@
 <ul>
 {% for article in object_list %}
     <li>
-        <a href="article/{{ article.id }}">{{ article.created|date }} - {{ article.title }}</a>
+        <a href="{{ article.get_absolute_url }}">{{ article.created|date }} - {{ article.title }}</a>
     </li>
 {% empty %}
     <li>内容为空。</li>

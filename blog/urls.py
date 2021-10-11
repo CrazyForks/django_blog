@@ -21,11 +21,13 @@ from .views import index,about
 from .views import ArticleListView,ArticleDetailView,ArticleMonthArchiveView,ArticleYearArchiveView
 
 urlpatterns = [
-    path('', index),
-    path('list', ArticleListView.as_view(), name="article-list"),
+    path('', index, name='home'),
+    path('article', ArticleListView.as_view(), name="article-list"),
     path('article/<pk>/', ArticleDetailView.as_view(), name="article-detail"),
-    path('about', about),
-    path('about', about),
+
+
+    path('about', about, name="about"),
+
 
 
     path('<int:year>/',
