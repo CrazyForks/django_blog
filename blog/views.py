@@ -18,3 +18,8 @@ def detail(request):
 def about(request):
     return render(request=request,template_name="blog/about.html")
 
+
+
+def archive(request):
+    return render(request=request,template_name="blog/archive.html")
+
