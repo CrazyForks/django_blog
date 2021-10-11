@@ -133,14 +133,19 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #########################################################################
 #########################################################################
 
-DEBUG = True  # 是否开启调试模式
+# 是否开启调试模式
+DEBUG = True
 
-LANGUAGE_CODE = 'zh-hans'  # 中文界面
+# 中文界面
+LANGUAGE_CODE = 'zh-hans'
 
-TIME_ZONE = 'Asia/Shanghai'  # 时区改成北京时间
+# 时区改成北京时间
+TIME_ZONE = 'Asia/Shanghai'
 
+# 正式环境，允许哪些host(域名、ip)访问
 ALLOWED_HOSTS = []
 
+# 要启用的app
 INSTALLED_APPS += [
 
 ]
