@@ -39,7 +39,7 @@ class Migration(migrations.Migration):
                 ('click', models.PositiveIntegerField(default=0, verbose_name='点击量')),
                 ('created', models.DateTimeField(auto_now_add=True, verbose_name='添加时间')),
                 ('modified', models.DateTimeField(default=django.utils.timezone.now, verbose_name='修改时间')),
-                ('category', models.ForeignKey(on_delete=models.SET(blog.models.Category_未分类), to='blog.category', verbose_name='文章分类')),
+                ('category', models.ForeignKey(on_delete=models.SET(blog.models.category_haveNo), to='blog.category', verbose_name='文章分类')),
             ],
         ),
     ]
