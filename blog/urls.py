@@ -15,13 +15,11 @@ Including another URLconf
 """
 
 from django.urls import path
-from django.views.generic.dates import ArchiveIndexView
-from .models import Article
-from .views import index
-from .views import ArticleListView,ArticleDetailView,AboutPageView
+
+from .views import ArticleListView,ArticleDetailView,AboutPageView,IndexPageView
 
 urlpatterns = [
-    path('', index, name='home'),
+    path('', IndexPageView.as_view(), name='home'),
     path('blog', ArticleListView.as_view(), name="article-list"),
     path('blog/<pk>/', ArticleListView.as_view(), name="category-detail"),
 

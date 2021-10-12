@@ -56,8 +56,18 @@ class AboutPageView(TemplateView):
 
 
 
-def index(request):
-    return render(request=request, template_name="blog/index.html")
+class IndexPageView(TemplateView):
+
+    template_name = "blog/index.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # context['SITE_CONFIG'] = settings.SITE_CONFIG  # 网站配置信息
+        return context
+
+
+
+
 
 
 
