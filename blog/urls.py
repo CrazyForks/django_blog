@@ -18,7 +18,7 @@ from django.urls import path
 from django.views.generic.dates import ArchiveIndexView
 from .models import Article
 from .views import index,about
-from .views import ArticleListView,ArticleDetailView,ArticleMonthArchiveView,ArticleYearArchiveView
+from .views import ArticleListView,ArticleDetailView,CategoryDetailView
 
 urlpatterns = [
     path('', index, name='home'),
@@ -26,6 +26,7 @@ urlpatterns = [
     path('article/<pk>/', ArticleDetailView.as_view(), name="article-detail"),
 
 
+    path('category/<pk>', CategoryDetailView.as_view(), name="category-detail"),
     path('about', about, name="about"),
 
 
