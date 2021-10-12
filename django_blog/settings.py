@@ -143,7 +143,7 @@ LANGUAGE_CODE = 'zh-hans'
 TIME_ZONE = 'Asia/Shanghai'
 
 # 正式环境，允许哪些host(域名、ip)访问
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'xxx.com']
 
 # 要启用的app
 INSTALLED_APPS += [
