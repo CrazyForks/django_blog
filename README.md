@@ -24,6 +24,22 @@ django+bootstrap5 实现的 个人博客
 - [ ] 文章页面的toc 导航
 - [ ] 新建文章 自动推送到百度、谷歌搜索引擎
 
+# 如何运行演示项目
+
+- 克隆到本地
+- `pip install -r requirements.txt`
+- `python manage.py runserver`
+- 打开 `http://127.0.0.1:8000/` 就可以了
+
+# 如何使用
+- 克隆到本地
+- `pip install -r requirements.txt`
+- 删除旧的测试数据库 `db.sqlite3`
+- 执行 `python manage.py migrate` 创建数据库
+- 执行 `python manage.py createsuperuser` 根据步骤创建超级管理员账号
+- 执行 `python manage.py runserver` 启动服务
+- 打开 `http://127.0.0.1:8000/` 就可以了
+
 # 截图展示
 ## 源码-配置信息
 ![image](https://user-images.githubusercontent.com/6580897/136949249-a0caf031-d7c9-4264-a889-8bc177970249.png)
