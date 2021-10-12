@@ -17,8 +17,8 @@ Including another URLconf
 from django.urls import path
 from django.views.generic.dates import ArchiveIndexView
 from .models import Article
-from .views import index,about
-from .views import ArticleListView,ArticleDetailView
+from .views import index
+from .views import ArticleListView,ArticleDetailView,AboutPageView
 
 urlpatterns = [
     path('', index, name='home'),
@@ -30,7 +30,7 @@ urlpatterns = [
 
 
 
-    path('about', about, name="about"),
+    path('about', AboutPageView.as_view(), name="about"),
 
 
 ]
