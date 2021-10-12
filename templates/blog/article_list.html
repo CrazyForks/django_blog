@@ -17,6 +17,13 @@
     </div>
     <div class="col">
 
+{#    搜索#}
+    {% if q %}
+    <div class="alert alert-success" role="alert">
+       与 " <b>{{ q }}</b> " 相关的 {{ object_list | length  }} 个结果
+    </div>
+    {% endif %}
+
       <ul class="list-group">
         {% for article in object_list %}
             <li class="list-group-item list-group-item-action">
