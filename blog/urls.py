@@ -29,14 +29,4 @@ urlpatterns = [
     path('about', about, name="about"),
 
 
-
-    path('<int:year>/',
-         ArticleYearArchiveView.as_view(),
-         name="article_year_archive"),
-
-
-path('archive/',
-         ArchiveIndexView.as_view(model=Article, date_field="created"),
-         name="article_archive"),
-    # path('archive', ArticleMonthArchiveView.as_view(), name="ArticleMonthArchive"),
 ]

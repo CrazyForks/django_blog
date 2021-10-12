@@ -1,12 +1,33 @@
 {% extends "base.html" %}
+{% block title %}{{ object.title }}{% endblock %}
+{% block keywords %}{% if object.keywords %}{{ object.keywords }}{% endif %}{% endblock %}
+{% block description %}{% if object.description %}{{ object.description }}{% endif %}{% endblock %}
+
+
 
 {% block content %}
 
+<article  >
+
+{# 文章标题 #}
 <h1>{{ object.title }}</h1>
+
+{# 是否原创 #}
+{% if object.is_original %}
+    <span class="badge bg-success">原创</span>
+{% else %}
+    <span class="badge bg-secondary">转载</span>
+{% endif %}
+
+{#文章发布时间#}
+<span class="text-muted text-small"> {{ object.created|date }}</span>
+<hr>
+
+{#文章内容#}
 <p>{{ object.content_html|safe }}</p>
 
-<p>created: {{ object.created|date }}</p>
-<p>modified: {{ object.modified|date }}</p>
+
+</article>
 
 
 {% endblock %}
