@@ -35,6 +35,12 @@ class ArticleListView(ListView):
         context['category'] = Category.objects.all()  # 网站分类
         context['q'] = self.request.GET.get('q', None)  # 搜索关键词
 
+        category_id = self.kwargs.get("pk", None)   # 分类id
+        if category_id:
+            # 为真表示用户传入了分类id，想要查看某个分类下的文章
+            context['category_item'] = Category.objects.get(pk=category_id) 
+
+
         return context
 
 

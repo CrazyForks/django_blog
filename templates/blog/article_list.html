@@ -17,10 +17,18 @@
     </div>
     <div class="col">
 
-{#    搜索#}
+    {#    搜索#}
     {% if q %}
     <div class="alert alert-success" role="alert">
        与 " <b>{{ q }}</b> " 相关的 {{ object_list | length  }} 个结果
+    </div>
+    {% endif %}
+
+    {#    分类 筛选#}
+    {% if category_item %}
+    <div class="alert alert-success" role="alert">
+       你正在查看 【{{ category_item }}】 下的文章
+
     </div>
     {% endif %}
 

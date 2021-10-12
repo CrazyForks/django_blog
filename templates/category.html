@@ -2,16 +2,18 @@
   <div class="card-header">
     分类
   </div>
-  <ul class="list-group list-group-flush">
 
-    {% for item in category %}
-
-      <li class="list-group-item">
-          <a target="_blank" href="{{ item.get_absolute_url }}">{{ item }}</a>
-      </li>
-    {% empty %}
+<ul class="nav nav-pills flex-column mb-auto">
+{% for item in category %}
+    <li class="nav-item ">
+        <a class="nav-link {% if request.path == item.get_absolute_url %}active{% endif %}" target="_blank" href="{{ item.get_absolute_url }}">{{ item }}</a>
+    </li>
+{% empty %}
     啥都没有
-    {% endfor %}
-  </ul>
+{% endfor %}
+
+</ul>
+
+
 </div>
 
