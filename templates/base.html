@@ -6,7 +6,7 @@
     <link href="https://cdn.staticfile.org/twitter-bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet" >
     <link href="https://cdn.staticfile.org/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" >
 
-    <title>{% block title %}{% endblock %}</title>
+    <title>{% block title %}{{ SITE_CONFIG.网站名称 }}{% endblock %}</title>
     <meta name="keywords" content="{% block keywords %}{% endblock %}">
     <meta name="description" content="{% block description %}{% endblock %}">
 

@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}{{ object.title }}{% endblock %}
+{% block title %}{{ object.title }} - {{ SITE_CONFIG.网站名称 }}{% endblock %}
 {% block keywords %}{% if object.keywords %}{{ object.keywords }}{% endif %}{% endblock %}
 {% block description %}{% if object.description %}{{ object.description }}{% endif %}{% endblock %}
 
