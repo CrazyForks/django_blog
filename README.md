@@ -26,7 +26,7 @@ django+bootstrap5 实现的 个人博客
 
 
 
-# 参考
+# 致谢
 
 https://fontawesome.com/start 图标
 
