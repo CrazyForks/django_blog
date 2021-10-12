@@ -45,6 +45,14 @@ https://fontawesome.com/start 图标
 
 https://getbootstrap.com/  ui框架
 
-https://www.djangoproject.com/
+https://www.djangoproject.com/ django web框架
+
+https://github.com/jazzband/django-debug-toolbar   调试
+
+https://github.com/etianen/django-reversion    admin 版本控制
+
+https://github.com/Python-Markdown/markdown  markdown
+
+https://github.com/mozilla/bleach   过滤非法字符
 
 
