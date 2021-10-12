@@ -18,15 +18,18 @@ from django.urls import path
 from django.views.generic.dates import ArchiveIndexView
 from .models import Article
 from .views import index,about
-from .views import ArticleListView,ArticleDetailView,CategoryDetailView
+from .views import ArticleListView,ArticleDetailView
 
 urlpatterns = [
     path('', index, name='home'),
-    path('article', ArticleListView.as_view(), name="article-list"),
+    path('blog', ArticleListView.as_view(), name="article-list"),
+    path('blog/<pk>/', ArticleListView.as_view(), name="category-detail"),
+
+
     path('article/<pk>/', ArticleDetailView.as_view(), name="article-detail"),
 
 
-    path('category/<pk>/', CategoryDetailView.as_view(), name="category-detail"),
+
     path('about', about, name="about"),
 
 
