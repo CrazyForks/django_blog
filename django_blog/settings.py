@@ -150,3 +150,46 @@ INSTALLED_APPS += [
     'reversion',
     'blog'
 ]
+
+# 网站上很多信息的配置
+SITE_CONFIG = {
+    "网站名称": "王大锤的技术博客",
+
+    # 要控制、扩展 我的信息，可修改 模板： templates/user_info.html
+    "我的信息": {
+        "头像": "https://gdown.baidu.com/img/0/200_200/1c7d0637ca01803040e087fb44e47654.png", # 可输入网址，也可以输入base64
+        "名字": "王大锤",
+        "座右铭": "大王叫我来巡山~~~~呐~~~", # 仅支持纯文本，暂不支持html、markdown
+
+        "社交信息":  {
+            "github": {
+                "显示": True,  # 若为True，前台就会显示
+                "内容": "https://github.com/find456789/django_blog",  # 这里记得改成你自己的github网址
+            },
+            "微博": {
+                "显示": True,  # 若为True，前台就会显示
+                "内容": "https://weibo.com/xxx",  # 如 https://weibo.com/xxx
+            },
+
+            "微信": {
+                "显示": True,  # 若为True，前台就会显示
+                "内容": "https://gdown.baidu.com/img/0/200_200/1c7d0637ca01803040e087fb44e47654.png",  # 可输入网址，也可以输入base64
+            },
+
+            "微信公众号": {
+                "显示": True,  # 若为True，前台就会显示
+                "内容": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAMAAACfWMssAAAAbFBMVEUAAAD//////1X//2b/41X/6lX/51D/4lL/41D/41D/4k3/403/4k7/4U7/4k//4U7/4U3/4U7/4U3/4k7/4k7/4k7/4U7/4U7/4k3/4U7/4k7/4U7/4U5cOSVsSimpiDeujTnFpT/83Uz/4U2D8A1lAAAAHXRSTlMAAQMFCQwgNTZJT2NyeYWam6ussMLS1d/k6ezw+ZtQLqkAAAFWSURBVEjHpZfbsoIwDEVjUUEoF+VqoXBw//8/ngfUUS6ljeuxM8vJ0DTZEq0gfJkWteo6VRep9AVZ4YXXFl+019Db1Y6xwgoqPho1ETXYoIkMFV8qGKguG9ohwQ7JYc075dglPy29cwkLyvPCu8OK+8w8lbCk/Kr2kMOa/PMLJXAg+bg/OPG+T1G5idWrhyI4Ej37unEVm6njYzgTExF5yl1UHhGFYBAS0Y0jXonEbE48hr4fHuYToBUUzH5r0FrrwXwCwCc5O+m11ro3nwCQlPHEjApeqQXV4Hwc1KTAQlHHEzu+yC615on14josKRYNYEm6aDlLJPk80V88KztasfWQx78n49ZDXh8do34zbo2O1WG1IypvczyaS41/G8jsFcBfOuw1x1+s/FXODg/8uMIPSPxIxg+B/Nj5Q9DlR+spzN/mYf5mEeanigOZvf4+ZDJYrfEfMjVK7C1/36oAAAAASUVORK5CYII=",  # 可输入网址，也可以输入base64
+            },
+            "rss": {
+                # rss的地址django会自动处理，你可以控制是否显示
+                "显示": True,  # 若为True，前台就会显示
+            },
+        }
+
+    },
+
+
+
+
+
+}

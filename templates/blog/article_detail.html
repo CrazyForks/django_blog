@@ -3,11 +3,26 @@
 {% block keywords %}{% if object.keywords %}{{ object.keywords }}{% endif %}{% endblock %}
 {% block description %}{% if object.description %}{{ object.description }}{% endif %}{% endblock %}
 
-
-
 {% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-3 d-none d-md-block">
+     <div class="row">
+         <div class="col">
+             {% include 'user_info.html' %}
+         </div>
+     </div>
+          <div class="row mt-5">
+         <div class="col">
+             {% include 'category.html' %}
+         </div>
+     </div>
+    </div>
+    <div class="col">
 
-<article  >
+<article >
+
+
 
 {# 文章标题 #}
 <h1>{{ object.title }}</h1>
@@ -28,6 +43,14 @@
 
 
 </article>
+    </div>
+  </div>
+
+</div>
+
+
+
+
 
 
 {% endblock %}

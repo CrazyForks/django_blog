@@ -1,16 +1,48 @@
-<div class="card" style=" ">
-  <img src="..." class="card-img-top" alt="...">
+<div class="card text-center"  >
+
+
+
   <div class="card-body">
-    <h5 class="card-title">User info</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <img style="width: 80px;height: 80px" src="{{ SITE_CONFIG.我的信息.头像 }}" alt="">
+    <h5 class="card-title mt-1">{{ SITE_CONFIG.我的信息.名字 }}</h5>
+    <p class="card-text">{{ SITE_CONFIG.我的信息.座右铭 }}</p>
   </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">An item</li>
-    <li class="list-group-item">A second item</li>
-    <li class="list-group-item">A third item</li>
-  </ul>
+
   <div class="card-body">
-    <a href="#" class="card-link">Card link</a>
-    <a href="#" class="card-link">Another link</a>
+
+
+      {% if SITE_CONFIG.我的信息.社交信息.github.显示 %}
+           <a target="_blank" href="{{ SITE_CONFIG.我的信息.社交信息.github.内容 }}" class="card-link"><i class="fab fa-github"></i></a>
+      {% endif %}
+
+
+      {% if SITE_CONFIG.我的信息.社交信息.微博.显示 %}
+           <a target="_blank" href="{{ SITE_CONFIG.我的信息.社交信息.微博.内容 }}" class="card-link"><i class="fab fa-weibo"></i></a>
+      {% endif %}
+
+
+
+      {% if SITE_CONFIG.我的信息.社交信息.微信.显示 %}
+       <a class="card-link" href="#"  data-bs-toggle="tooltip" data-bs-html="true" title="<img src='{{ SITE_CONFIG.我的信息.社交信息.微信.内容 }}' alt='微信'>">
+        <i class="fab fa-weixin"></i></a>
+      {% endif %}
+
+      {% if SITE_CONFIG.我的信息.社交信息.微信公众号.显示 %}
+       <a class="card-link" href="#"  data-bs-toggle="tooltip" data-bs-html="true" title="<img src='{{ SITE_CONFIG.我的信息.社交信息.微信公众号.内容 }}' alt='微信公众号'>">
+        <i class="fab fa-weixin"></i></a>
+      {% endif %}
+
+
+
+
+      {% if SITE_CONFIG.我的信息.社交信息.rss.显示 %}
+           <a target="_blank" href="" class="card-link"><i class="fas fa-rss-square"></i></a>
+      {% endif %}
+
+
+
+
+
+
   </div>
 </div>

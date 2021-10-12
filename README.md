@@ -17,3 +17,13 @@ django+bootstrap5 实现的 个人博客
 # 特点
 
 - [x] 文章 支持历史版本管理（随时回退）
+
+
+
+# 参考
+
+https://fontawesome.com/start 图标
+https://getbootstrap.com/  ui框架
+https://www.djangoproject.com/
+
+
