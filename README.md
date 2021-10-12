@@ -25,6 +25,9 @@ django+bootstrap5 实现的 个人博客
 - [ ] 新建文章 自动推送到百度、谷歌搜索引擎
 
 # 截图展示
+## 源码-配置信息
+![image](https://user-images.githubusercontent.com/6580897/136949249-a0caf031-d7c9-4264-a889-8bc177970249.png)
+
 
 ## 前台-首页
 ![image](https://user-images.githubusercontent.com/6580897/136948957-f1b939c5-765a-45a9-98ed-ec51546601cd.png)
