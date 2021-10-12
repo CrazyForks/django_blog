@@ -1,6 +1,6 @@
 
 项目状态： 正在开发中
-
+项目地址： https://github.com/find456789/django_blog
 
 # django_blog
 django+bootstrap5 实现的 个人博客
