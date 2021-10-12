@@ -14,6 +14,9 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+    def get_absolute_url(self):
+        return reverse('category-detail', kwargs={'pk': self.pk})
+
     class Meta:  # 按sort排序
         ordering = ['sort']
         verbose_name = "分类"

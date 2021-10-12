@@ -7,7 +7,7 @@
     {% for item in category %}
 
       <li class="list-group-item">
-          {{ item }}
+          <a target="_blank" href="{{ item.get_absolute_url }}">{{ item }}</a>
       </li>
     {% empty %}
     啥都没有

@@ -26,7 +26,7 @@ urlpatterns = [
     path('article/<pk>/', ArticleDetailView.as_view(), name="article-detail"),
 
 
-    path('category/<pk>', CategoryDetailView.as_view(), name="category-detail"),
+    path('category/<pk>/', CategoryDetailView.as_view(), name="category-detail"),
     path('about', about, name="about"),
 
 

@@ -11,7 +11,7 @@ from .models import Article,Category
 class ArticleListView(ListView):
     # model = Article
     queryset = Article.get_public_article()
-    paginate_by = 3
+    paginate_by = 20
 
 
     def get_context_data(self, **kwargs):
@@ -36,7 +36,7 @@ class ArticleDetailView(DetailView):
 
 class CategoryDetailView(DetailView):
 
-    model = Article
+    model = Category
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

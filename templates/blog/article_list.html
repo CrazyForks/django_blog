@@ -16,11 +16,18 @@
      </div>
     </div>
     <div class="col">
-        <ul>
-    {% for article in object_list %}
-        <li>
-           {{ article.category}} <a href="{{ article.get_absolute_url }}"> {{ article.title }}</a>{{ article.created|date }}
-        </li>
+
+      <ul class="list-group">
+        {% for article in object_list %}
+            <li class="list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">
+                        <a target="_blank" href="{{ article.get_absolute_url }}"> {{ article.title }}</a>
+                    </h5>
+                    <small>{{ article.created|date }}</small>
+                </div>
+            </li>
+
     {% empty %}
         <li>内容为空。</li>
     {% endfor %}
@@ -36,12 +43,9 @@
 
 
 
-
-
-
 {#分页#}
-<nav aria-label="Page navigation ">
-  <ul class="pagination">
+<nav aria-label="Page navigation" class="mt-5">
+  <ul class="pagination justify-content-center">
     {% if page_obj.has_previous %}
         <li class="page-item"><a class="page-link" href="?page=1">第一页</a></li>
         <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">上一页</a></li>
@@ -64,5 +68,9 @@
     {% endif %}
   </ul>
 </nav>
+
+
+
+
 
 {% endblock %}
