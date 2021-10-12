@@ -193,3 +193,13 @@ SITE_CONFIG = {
 
 
 }
+
+# 如果开启了调试，那么就要加载这些配置
+if DEBUG:
+    INSTALLED_APPS += [
+        'debug_toolbar',
+    ]
+    MIDDLEWARE += [
+        'debug_toolbar.middleware.DebugToolbarMiddleware',
+    ]
+    INTERNAL_IPS = ["127.0.0.1", ]
