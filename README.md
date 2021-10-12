@@ -17,8 +17,8 @@ django+bootstrap5 实现的 个人博客
 # 特点
 
 - [x] 文章的历史版本管理（随时回退）
-- [ ] rss、atom
-- [ ] markdown
+- [x] rss、atom
+- [x] markdown
 - [ ] 评论功能
 - [ ] 代码高亮
 - [ ] 文章页面的toc 导航
