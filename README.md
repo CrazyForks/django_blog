@@ -27,10 +27,10 @@ django+bootstrap5 实现的 个人博客
 # 截图展示
 
 ## 前台-首页
-![image](https://user-images.githubusercontent.com/6580897/136937193-5647e16c-49e5-4ed9-9b75-b8642fce3d13.png)
+![image](https://user-images.githubusercontent.com/6580897/136948957-f1b939c5-765a-45a9-98ed-ec51546601cd.png)
 
 ## 前台-文章列表页
-![image](https://user-images.githubusercontent.com/6580897/136937253-ffacadc5-4451-419a-aeee-13fb8f1e79de.png)
+![image](https://user-images.githubusercontent.com/6580897/136948978-024bca66-6b68-49e3-9d3e-bc0d4a677cfc.png)
 
 
 ## 前台-文章详情页
@@ -38,7 +38,7 @@ django+bootstrap5 实现的 个人博客
 
 
 ## 前台-关于我
-![image](https://user-images.githubusercontent.com/6580897/136937411-17d8b197-92a2-4248-88dd-72b0a22d87e6.png)
+![image](https://user-images.githubusercontent.com/6580897/136949027-be794446-a04b-47cc-86e6-433bf5c58a2a.png)
 
 ## 后台-首页
 ![image](https://user-images.githubusercontent.com/6580897/136937552-3a825fef-4136-44e7-afef-133d9916d2d3.png)
