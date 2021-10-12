@@ -6,11 +6,7 @@
 django+bootstrap5 实现的 个人博客
 
 
-后台地址：  http://127.0.0.1:8000/admin/
 
-账号：admin888
-
-密码：admin888
 
 
 
@@ -30,6 +26,12 @@ django+bootstrap5 实现的 个人博客
 - `pip install -r requirements.txt`
 - `python manage.py runserver`
 - 打开 `http://127.0.0.1:8000/` 就可以了
+
+后台地址：  http://127.0.0.1:8000/admin/
+
+账号：admin888
+
+密码：admin888
 
 # 如何使用
 - 克隆到本地
