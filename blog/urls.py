@@ -16,19 +16,21 @@ Including another URLconf
 
 from django.urls import path
 
-from .views import ArticleListView,ArticleDetailView,AboutPageView,IndexPageView
+from .views import ArticleListView,ArticleDetailView,AboutPageView,IndexPageView,RssSiteArticleFeed,AtomSiteArticleFeed
 
 urlpatterns = [
     path('', IndexPageView.as_view(), name='home'),
     path('blog', ArticleListView.as_view(), name="article-list"),
     path('blog/<pk>/', ArticleListView.as_view(), name="category-detail"),
 
-
     path('article/<pk>/', ArticleDetailView.as_view(), name="article-detail"),
 
-
-
     path('about', AboutPageView.as_view(), name="about"),
+
+    # 同时支持 rss和atom，你可根据需要自己修改，默认用rss
+    path('blog/rss', RssSiteArticleFeed(), name="rss"),
+    # path('blog/atom', AtomSiteArticleFeed(), name="atom"),
+
 
 
 ]

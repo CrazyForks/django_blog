@@ -6,7 +6,10 @@ from django.shortcuts import get_object_or_404
 from django.views.generic.base import TemplateView
 from django.db.models import Q
 from django.conf import settings
+from django.contrib.syndication.views import Feed
+from django.utils.feedgenerator import Atom1Feed
 
+from django.urls import reverse
 from .models import Article,Category
 
 
@@ -38,7 +41,7 @@ class ArticleListView(ListView):
         category_id = self.kwargs.get("pk", None)   # 分类id
         if category_id:
             # 为真表示用户传入了分类id，想要查看某个分类下的文章
-            context['category_item'] = Category.objects.get(pk=category_id) 
+            context['category_item'] = Category.objects.get(pk=category_id)
 
 
         return context
@@ -81,10 +84,25 @@ class IndexPageView(ListView):
 
 
 
+class RssSiteArticleFeed(Feed):
+    title = settings.SITE_CONFIG.get("网站名称")
+    link = "/blog/rss/"
+    description = settings.SITE_CONFIG.get("网站描述")
+
+    def items(self):
+        return Article.get_public_article().order_by('-created')[:50] # 最近的50篇文章
+
+    def item_title(self, item):
+        return item.title
+
+    def item_description(self, item):
+        return item.description
 
 
-
-
+# atom，若不需要可删除
+class AtomSiteArticleFeed(RssSiteArticleFeed):
+    feed_type = Atom1Feed
+    subtitle = RssSiteArticleFeed.description
 
 
 
