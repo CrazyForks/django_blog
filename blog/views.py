@@ -18,10 +18,10 @@ class ArticleListView(ListView):
     def get_queryset(self):
         pk = self.kwargs.get("pk", None)
         if pk:
-            self.artcles = Article.get_public_article().filter(category=pk)
+            articles = Article.get_public_article().filter(category=pk)
         else:
-            self.artcles = Article.get_public_article()
-        return self.artcles
+            articles = Article.get_public_article()
+        return articles
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -56,13 +56,14 @@ class AboutPageView(TemplateView):
 
 
 
-class IndexPageView(TemplateView):
-
+class IndexPageView(ListView):
+    queryset = Article.get_public_article()
     template_name = "blog/index.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        # context['SITE_CONFIG'] = settings.SITE_CONFIG  # 网站配置信息
+        context['SITE_CONFIG'] = settings.SITE_CONFIG  # 网站配置信息
+        context['category'] = Category.objects.all()  # 网站分类
         return context
 
 

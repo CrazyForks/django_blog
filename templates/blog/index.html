@@ -1,6 +1,58 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-3 d-none d-md-block">
+     <div class="row">
+         <div class="col">
+             {% include 'user_info.html' %}
+         </div>
+     </div>
+          <div class="row mt-3">
+         <div class="col">
+             {% include 'category.html' %}
+         </div>
+     </div>
+    </div>
+    <div class="col">
 
-    index
+  <ul class="list-group  ">
+      {% for article in object_list %}
+
+
+   <li   class="list-group-item  ">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1"><a target="_blank" href="{{ article.get_absolute_url }}"> {{ article.title }}</a></h5>
+      <small class="text-muted">{{ article.created|date }}</small>
+    </div>
+    <p class="mb-1">{{ article.content_markdown|slice:":300" }}</p>
+
+
+
+  </li>
+
+
+   {% empty %}
+        <li>内容为空。</li>
+    {% endfor %}
+</ul>
+
+
+    </div>
+  </div>
+
+</div>
+
+
+
+<div class="mx-auto mt-5" style="width: 200px;">
+
+<a class="btn btn-outline-primary btn-lg" href="{% url 'article-list' %}" role="button">查看更多</a>
+
+</div>
+
+
+
+
 {% endblock %}
