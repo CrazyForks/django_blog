@@ -56,7 +56,7 @@ django+bootstrap5 实现的 个人博客
 
 
 ## 前台-文章详情页
-![image](https://user-images.githubusercontent.com/6580897/136937382-9b3fa672-d298-4f93-ad00-c389946d8f8d.png)
+![image](https://user-images.githubusercontent.com/6580897/137133118-565290f7-0109-4952-b0fa-ad11169b8034.png)
 
 
 ## 前台-关于我
