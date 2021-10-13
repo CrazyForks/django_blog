@@ -2,9 +2,10 @@ from django.db import models
 from django.utils import timezone
 from django.urls import reverse
 from django.db.models import Q, F
-
+from utils.seo_sendUrltoRobots import sendToSEO
 from utils.ModelChoices import ChoicesArticleStatus
 from utils.makrdown2 import md2html_and_html_clean
+from django.conf import settings
 
 class Category(models.Model):
     name = models.CharField('分类名', max_length=64)
@@ -62,8 +63,16 @@ class Article(models.Model):
 
     # 主要是给 admin调用，在admin操作保存的时候调用
     def save(self, *args, **kwargs):
-        self.content_html = md2html_and_html_clean(self.content_markdown)  # 转义危险的字符
-        super().save(*args, **kwargs) # 保存
+        adding = self._state.adding  # 本次是否是新增文章
+
+        self.content_html = md2html_and_html_clean(self.content_markdown)  # 转义危险的字符,并转换为html格式存储
+        super().save(*args, **kwargs)  # 保存到数据库
+
+        # 是新建文章吗？
+        if adding:
+            # 如果开启了： 每次新建文章 就推送，那就执行响应代码
+            if settings.SEO.get("启用", None):
+                sendToSEO(self.get_absolute_url())
 
     # 点击量加1
     @staticmethod
