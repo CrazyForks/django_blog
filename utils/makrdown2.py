@@ -14,7 +14,7 @@ def md2html(mdstr):
     # 官方插件 https://python-markdown.github.io/extensions/
     # 第三方插件 https://github.com/Python-Markdown/markdown/wiki/Third-Party-Extensions
     exts = ['markdown.extensions.extra',
-            'markdown.extensions.codehilite',  # 代码块（高亮）
+            # 'codehilite',  # 代码块（高亮）
             'nl2br',  # 回车强制换行，模仿github的markdown
             # BootStrap_table_Extension(),  # 为了支持表格 table,
 
