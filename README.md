@@ -39,7 +39,6 @@ django+bootstrap5 实现的 个人博客
 - `pip install -r requirements.txt`
 - 删除旧的测试数据库 `db.sqlite3`
 - 把配置文件 `django_blog/django_blog/settings.py` 最底部的 `DEBUG = True` 改为 `DEBUG = False`
-- 在配置文件  `db.sqlite3`
 - 执行 `python manage.py migrate` 创建数据库
 - 执行 `python manage.py createsuperuser` 根据步骤创建超级管理员账号
 - 执行 `python manage.py runserver` 启动服务
