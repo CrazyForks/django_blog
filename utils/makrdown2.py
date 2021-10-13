@@ -16,7 +16,7 @@ def md2html(mdstr):
     exts = ['markdown.extensions.extra',
             # 'codehilite',  # 代码块（高亮）
             'nl2br',  # 回车强制换行，模仿github的markdown
-            # BootStrap_table_Extension(),  # 为了支持表格 table,
+            BootStrap_table_Extension(),  # 为了支持表格 table,
 
             # 'markdown.extensions.tables', # 为了支持表格 table
             # 'markdown.extensions.toc',
