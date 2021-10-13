@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.urls import reverse
+from django.db.models import Q, F
 
 from utils.ModelChoices import ChoicesArticleStatus
 from utils.makrdown2 import md2html_and_html_clean
@@ -63,6 +64,11 @@ class Article(models.Model):
     def save(self, *args, **kwargs):
         self.content_html = md2html_and_html_clean(self.content_markdown)  # 转义危险的字符
         super().save(*args, **kwargs) # 保存
+
+    # 点击量加1
+    @staticmethod
+    def click_1(pk):
+        Article.objects.filter(pk=pk).update(click=F('click') + 1)
 
 
     class Meta:

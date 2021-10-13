@@ -51,6 +51,10 @@ class ArticleDetailView(DetailView):
     # model = Article
     queryset = Article.get_public_article()
     def get_context_data(self, **kwargs):
+
+        pk = self.kwargs.get("pk", None)
+        Article.click_1(pk)  # 文章的点击量+1
+
         context = super().get_context_data(**kwargs)
         context['SITE_CONFIG'] = settings.SITE_CONFIG  # 网站配置信息
         context['category'] = Category.objects.all()  # 网站分类
