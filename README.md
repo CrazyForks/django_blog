@@ -97,3 +97,5 @@ https://github.com/Python-Markdown/markdown  markdown
 https://github.com/mozilla/bleach   过滤非法字符
 
 https://prismjs.com/ 代码高亮
+
+https://staticfile.org/ 部分静态资源托管
