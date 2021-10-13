@@ -6,9 +6,10 @@
     <link href="https://cdn.staticfile.org/twitter-bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet" >
     <link href="https://cdn.staticfile.org/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" >
     <link href="https://cdn.staticfile.org/prism/1.25.0/themes/prism.min.css" rel="stylesheet" >
+{#代码块显示行数#}
     <link href="https://cdn.staticfile.org/prism/1.25.0/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet" >
-{#    <link href="https://cdn.staticfile.org/prism/1.25.0/themes/prism-funky.min.css" rel="stylesheet" >#}
-{#    <link href="https://cdn.staticfile.org/prism/1.25.0/themes/prism-dark.css" rel="stylesheet" >#}
+{#   代码块显示复制工具栏#}
+    <link href="https://cdn.staticfile.org/prism/1.25.0/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet" >
 
     <title>{% block title %}{{ SITE_CONFIG.网站名称 }}{% endblock %}</title>
     <meta name="keywords" content="{% block keywords %}{% endblock %}">
@@ -18,7 +19,12 @@
 
 
 </head>
-<body>
+<body
+{#    代码块复制功能的汉化处理  #}
+    data-prismjs-copy="复制"
+	data-prismjs-copy-error="请按 Ctrl+C 进行复制"
+	data-prismjs-copy-success="复制成功!"
+>
 
 <main class="container line-numbers">
 
@@ -36,10 +42,21 @@
 <script src="https://cdn.staticfile.org/twitter-bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.staticfile.org/prism/1.25.0/components/prism-core.min.js"></script>
 {#<script src="https://cdn.staticfile.org/prism/1.25.0/themes/prism.min.js"></script>#}
-<script src="https://cdn.staticfile.org/prism/1.25.0/plugins/line-numbers/prism-line-numbers.min.js"  data-manual></script>
+
+{#代码块显示行数#}
+<script src="https://cdn.staticfile.org/prism/1.25.0/plugins/line-numbers/prism-line-numbers.min.js" ></script>
+
+{#代码块 工具栏#}
+<script src="https://cdn.staticfile.org/prism/1.25.0/plugins/toolbar/prism-toolbar.min.js"  ></script>
+
+{#代码块显示语言#}
+<script src="https://cdn.staticfile.org/prism/1.25.0/plugins/show-language/prism-show-language.min.js" ></script>
+
+{#代码块显示复制按钮#}
+<script src="https://cdn.staticfile.org/prism/1.25.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js" ></script>
 {#<script src="https://cdn.staticfile.org/prism/1.25.0/components/prism-javascript.min.js"  data-manual></script>#}
 
-
+{# 代码高亮自动加载对应语言 #}
 <script src="https://cdn.staticfile.org/prism/1.25.0/plugins/autoloader/prism-autoloader.min.js"></script>
 
 <script>
