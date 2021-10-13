@@ -37,7 +37,7 @@ urlpatterns = [
 
     # 同时支持 rss和atom，你可根据需要自己修改，默认用rss
     path('blog/rss', RssSiteArticleFeed(), name="rss"),
-    # path('blog/atom', AtomSiteArticleFeed(), name="atom"),
+    path('blog/atom', AtomSiteArticleFeed(), name="atom"),
 
     path('sitemap.xml', sitemap,
          {'sitemaps': {'blog': GenericSitemap(sitemap_info_dict, priority=0.6)}},
