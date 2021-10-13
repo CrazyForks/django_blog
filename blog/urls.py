@@ -15,8 +15,16 @@ Including another URLconf
 """
 
 from django.urls import path
-
+from django.contrib.sitemaps import GenericSitemap
+from django.contrib.sitemaps.views import sitemap
+from .models import Article
 from .views import ArticleListView,ArticleDetailView,AboutPageView,IndexPageView,RssSiteArticleFeed,AtomSiteArticleFeed
+
+sitemap_info_dict = {
+    'queryset': Article.objects.all(),
+    'date_field': 'created',
+}
+
 
 urlpatterns = [
     path('', IndexPageView.as_view(), name='home'),
@@ -31,6 +39,8 @@ urlpatterns = [
     path('blog/rss', RssSiteArticleFeed(), name="rss"),
     # path('blog/atom', AtomSiteArticleFeed(), name="atom"),
 
-
+    path('sitemap.xml', sitemap,
+         {'sitemaps': {'blog': GenericSitemap(sitemap_info_dict, priority=0.6)}},
+         name='django.contrib.sitemaps.views.sitemap'),
 
 ]

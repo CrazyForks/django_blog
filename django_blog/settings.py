@@ -147,6 +147,7 @@ ALLOWED_HOSTS = ['127.0.0.1', 'xxx.com']
 
 # 要启用的app
 INSTALLED_APPS += [
+    'django.contrib.sitemaps',
     'reversion',
     'blog'
 ]
