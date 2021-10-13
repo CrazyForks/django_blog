@@ -19,7 +19,7 @@ django+bootstrap5 实现的 个人博客
 
 - [x] 前台 文章 查看、搜索
 - [x] 前台 文章 代码高亮
-- [x] rss、atom
+- [x] rss、atom、sitemap
 
 - [ ] 评论功能
 - [ ] 文章页面的toc 导航
