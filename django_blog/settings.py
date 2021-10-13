@@ -157,7 +157,7 @@ SEO = {
     "开启": False,  # 为True则开启每次新建文章就推送，开启前必须正确配置，否则运行会出错
 
     # 百度推送接口从这里获取  https://ziyuan.baidu.com/linksubmit/index ,你需要先把你的网站添加到【百度站长】
-    "百度推送接口": "http://data.zz.baidu.com/urls?site=https://xxxx.com&token=Xxxxxx22",
+    "百度推送接口": "http://data.zz.baidu.com/urls?site=https://xxxx.com&token=Xxxxxx22",  # 若开启，那这里必须填写正确
     # 谷歌推送接口不用做配置，但要求你去这里添加你的站点 https://search.google.com/search-console/welcome
     "谷歌": ""
 }
