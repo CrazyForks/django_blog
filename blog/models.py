@@ -7,7 +7,7 @@ from utils.makrdown2 import md2html_and_html_clean
 
 class Category(models.Model):
     name = models.CharField('分类名', max_length=64)
-    sort = models.SmallIntegerField('分类排序', default=0, help_text="数字越小，排名越靠前")
+    sort = models.SmallIntegerField('分类排序', default=0, help_text="数字越大，排名越靠前")
     created = models.DateTimeField(verbose_name='添加时间',  auto_now_add=True)
     modified = models.DateTimeField(verbose_name='修改时间', default=timezone.now)
 
@@ -18,7 +18,7 @@ class Category(models.Model):
         return reverse('category-detail', kwargs={'pk': self.pk})
 
     class Meta:  # 按sort排序
-        ordering = ['sort']
+        ordering = ['-sort']
         verbose_name = "分类"
         verbose_name_plural = verbose_name
 
