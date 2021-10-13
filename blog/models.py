@@ -31,8 +31,9 @@ def category_haveNo():
 class Article(models.Model):
     title = models.CharField('文章标题',max_length=128)
 
-    category = models.ForeignKey(Category, verbose_name='文章分类', on_delete=models.SET(category_haveNo), )
-    # status = models.IntegerField('文章状态', choices=ChoicesArticleStatus.choices, default=ChoicesArticleStatus.PUBLIC)
+    # 如果某个分类被删除后，就把文章放入默认分类，即 category_haveNo()
+    category = models.ForeignKey(Category, verbose_name='文章分类', on_delete=models.SET_DEFAULT, default=category_haveNo)
+
     is_public = models.BooleanField('是否公开', default=True, help_text="文章是否公开展示，不勾选就对外隐藏")
     is_original = models.BooleanField('是否原创', default=True, help_text="文章是否原创，不勾选就是转载")
 
