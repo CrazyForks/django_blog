@@ -25,7 +25,7 @@ class Category(models.Model):
 
 def category_haveNo():
     """如果某个分类被删除，就把该分类下的文章移入【未分类】下"""
-    return Category.objects.get_or_create(username='未分类')[0]
+    return Category.objects.get_or_create(name='未分类')[0]
 
 
 class Article(models.Model):
