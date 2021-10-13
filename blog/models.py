@@ -63,7 +63,7 @@ class Article(models.Model):
 
     # 主要是给 admin调用，在admin操作保存的时候调用
     def save(self, *args, **kwargs):
-        adding = self._state.adding  # 本次是否是新增文章
+        adding = self._state.adding  # 本次是否是新增文章 (这里也可以通过判断 self.pk 是否存在 来知道是否是新建文章）
 
         self.content_html = md2html_and_html_clean(self.content_markdown)  # 转义危险的字符,并转换为html格式存储
         super().save(*args, **kwargs)  # 保存到数据库
