@@ -9,7 +9,7 @@ from django.conf import settings
 
 class Category(models.Model):
     name = models.CharField('分类名', max_length=64)
-    sort = models.SmallIntegerField('分类排序', default=0, help_text="数字越大，排名越靠前")
+    sort = models.SmallIntegerField('权重', default=0, help_text="数字越大，排名越靠前")
     created = models.DateTimeField(verbose_name='添加时间',  auto_now_add=True)
     modified = models.DateTimeField(verbose_name='修改时间', default=timezone.now)
 
@@ -32,6 +32,7 @@ def category_haveNo():
 
 class Article(models.Model):
     title = models.CharField('文章标题',max_length=128)
+    sort = models.SmallIntegerField('权重', default=0, help_text="数字越大，排名越靠前；首先根据该值排序，若文章的该值一样，那最新的文章排前面")
 
     # 如果某个分类被删除后，就把文章放入默认分类，即 category_haveNo()
     category = models.ForeignKey(Category, verbose_name='文章分类', on_delete=models.SET_DEFAULT, default=category_haveNo)
@@ -81,6 +82,6 @@ class Article(models.Model):
 
 
     class Meta:
-        ordering = ['-created'] # 默认按照创建时间排序
+        ordering = ['-sort', '-created'] # 按照sort、created排序，sort权重更高
         verbose_name = "文章"
         verbose_name_plural = verbose_name

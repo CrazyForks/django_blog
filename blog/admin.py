@@ -12,7 +12,7 @@ class CategoryAdmin(VersionAdmin):
 
 @admin.register(Article)
 class ArticleAdmin(VersionAdmin):
-    list_display = ('id', 'title',  'category', 'is_public', 'is_original', 'click',  'created',  'modified', )
+    list_display = ('id', 'title',  'sort',  'category', 'is_public', 'is_original', 'click',  'created',  'modified', )
     list_filter = ('is_public', 'is_original', 'category',)
     list_display_links = ('id', 'title',)
     search_fields = ('title', 'content_markdown')
