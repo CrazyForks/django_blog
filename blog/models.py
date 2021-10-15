@@ -1,16 +1,17 @@
 from django.db import models
 from django.utils import timezone
 from django.urls import reverse
-from django.db.models import Q, F
-from utils.seo_sendUrltoRobots import sendToSEO
-from utils.ModelChoices import ChoicesArticleStatus
+from django.db.models import F
+
 from utils.makrdown2 import md2html_and_html_clean
-from django.conf import settings
+
 
 class Category(models.Model):
     name = models.CharField('分类名', max_length=64)
     sort = models.SmallIntegerField('权重', default=0, help_text="数字越大，排名越靠前")
-    created = models.DateTimeField(verbose_name='添加时间',  auto_now_add=True)
+    article_count = models.IntegerField('文章数', default=0, help_text="该分类下，有多少篇文章")
+
+    created = models.DateTimeField(verbose_name='添加时间', auto_now_add=True)
     modified = models.DateTimeField(verbose_name='修改时间', default=timezone.now)
 
     def __str__(self):
@@ -18,6 +19,16 @@ class Category(models.Model):
 
     def get_absolute_url(self):
         return reverse('category-detail', kwargs={'pk': self.pk})
+
+    def get_article_count(self):
+        """获取该分类下的文章数量"""
+        return self.articles.count()
+
+    def update_article_count(self):
+        """更新字段 article_count"""
+        self.article_count = self.get_article_count()
+
+        self.save()
 
     class Meta:  # 按sort排序
         ordering = ['-sort']
@@ -31,24 +42,25 @@ def category_haveNo():
 
 
 class Article(models.Model):
-    title = models.CharField('文章标题',max_length=128)
+    title = models.CharField('文章标题', max_length=128)
     sort = models.SmallIntegerField('权重', default=0, help_text="数字越大，排名越靠前；首先根据该值排序，若文章的该值一样，那最新的文章排前面")
 
     # 如果某个分类被删除后，就把文章放入默认分类，即 category_haveNo()
-    category = models.ForeignKey(Category, verbose_name='文章分类', on_delete=models.SET_DEFAULT, default=category_haveNo)
+    category = models.ForeignKey(Category, verbose_name='文章分类', on_delete=models.SET_DEFAULT, default=category_haveNo,
+                                 related_name="articles")
 
     is_public = models.BooleanField('是否公开', default=True, help_text="文章是否公开展示，不勾选就对外隐藏")
     is_original = models.BooleanField('是否原创', default=True, help_text="文章是否原创，不勾选就是转载")
 
     content_markdown = models.TextField('文章内容markdown', null=True, blank=True)
-    content_html = models.TextField('文章内容html', null=True, blank=True,help_text="返回给客户端(根据markdown自动生成的，不要手动修改)")
+    content_html = models.TextField('文章内容html', null=True, blank=True, help_text="返回给客户端(根据markdown自动生成的，不要手动修改)")
 
     keywords = models.CharField('seo的keywords', max_length=640, blank=True, null=True)
     description = models.CharField('seo的description', max_length=640, blank=True, null=True)
 
-    click = models.PositiveIntegerField('点击量',default=0)
+    click = models.PositiveIntegerField('点击量', default=0)
 
-    created = models.DateTimeField(verbose_name='添加时间',  auto_now_add=True)
+    created = models.DateTimeField(verbose_name='添加时间', auto_now_add=True)
     modified = models.DateTimeField(verbose_name='修改时间', default=timezone.now)
 
     def __str__(self):
@@ -64,24 +76,15 @@ class Article(models.Model):
 
     # 主要是给 admin调用，在admin操作保存的时候调用
     def save(self, *args, **kwargs):
-        adding = self._state.adding  # 本次是否是新增文章 (这里也可以通过判断 self.pk 是否存在 来知道是否是新建文章）
-
         self.content_html = md2html_and_html_clean(self.content_markdown)  # 转义危险的字符,并转换为html格式存储
         super().save(*args, **kwargs)  # 保存到数据库
-
-        # 是新建文章吗？
-        if adding:
-            # 如果开启了： 每次新建文章 就推送，那就执行响应代码
-            if settings.SEO.get("启用", None):
-                sendToSEO(self.get_absolute_url())
 
     # 点击量加1
     @staticmethod
     def click_1(pk):
         Article.objects.filter(pk=pk).update(click=F('click') + 1)
 
-
     class Meta:
-        ordering = ['-sort', '-created'] # 按照sort、created排序，sort权重更高
+        ordering = ['-sort', '-created']  # 按照sort、created排序，sort权重更高
         verbose_name = "文章"
         verbose_name_plural = verbose_name

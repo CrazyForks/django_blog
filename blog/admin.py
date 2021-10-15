@@ -7,7 +7,7 @@ from .models import Category,Article
 
 @admin.register(Category)
 class CategoryAdmin(VersionAdmin):
-    list_display = ('id','name',  'sort',  'created',  'modified', )
+    list_display = ('id','name', 'article_count',  'sort',  'created',  'modified', )
     list_display_links = ('id', 'name',)
 
 @admin.register(Article)
