@@ -27,7 +27,7 @@
     {#    分类 筛选#}
     {% if category_item %}
     <div class="alert alert-success" role="alert">
-       你正在查看 【{{ category_item }}】 下的文章
+       你正在查看 【{{ category_item.name }}】 下的文章，该分类下共有 {{ category_item.article_count }} 篇文章
 
     </div>
     {% endif %}
